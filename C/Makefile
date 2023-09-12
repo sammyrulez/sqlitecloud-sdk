@@ -31,7 +31,7 @@ lz4.o:	lz4.c lz4.h
 	$(CC) $(OPTIONS) $(INCLUDES) lz4.c -c -o lz4.o
 	
 sqcloud.o:	sqcloud.c sqcloud.h
-	$(CC) $(OPTIONS) $(INCLUDES) sqcloud.c -c -o sqcloud.o
+	$(CC) -fPIC -shared *.o -o libsqcloud.so  ${LIBFLAGS} ${LDFLAGS}
 
 libsqcloud.a: lz4.o sqcloud.o
 	$(AR) rcs libsqcloud.a *.o
